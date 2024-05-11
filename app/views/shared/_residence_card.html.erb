@@ -1,0 +1,13 @@
+<div class="image-card">
+  <div class="image-container">
+    <!-- Navigation arrows -->
+    <button class="arrow left-arrow">&lt;</button>
+    <%= image_tag residence.image, alt: "Residence Image", class: "rounded-image" %>
+    <button class="arrow right-arrow">&gt;</button>
+  </div>
+  <div class="details">
+    <span><strong><%= residence.title %></strong></span><br>
+    <span>Anfitriã(o): <%= number_to_currency(residence.price_per_night) %></span><br>
+    <span><strong><%= number_to_currency(residence.price_per_night) %></strong> por hóspede</span>
+  </div>
+</div>
