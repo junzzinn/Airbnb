@@ -21,18 +21,7 @@
         category: "Beach House"
       )
     %>
-    <%= render partial: 'shared/residence_card', locals: { residence: residence } %>
-    <%
-      residence2 = OpenStruct.new(
-        title: "Beautiful Beach House",
-        description: "A cozy beach house with stunning ocean views.",
-        image: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4NjI3OTI1MjIxNDQyOA%3D%3D/original/bc989f2d-eca8-4bcf-a9b0-b70b8e685a64.jpeg?im_w=1440&im_q=highq",
-        address: "123 Ocean Avenue",
-        price_per_night: 200,
-        category: "Beach House"
-      )
-    %>
-    <%= render partial: 'shared/residence_card', locals: { residence: residence2 } %>
+    <%= render partial: 'shared/booking_card', locals: { residence: residence } %>
     <%= yield %>
   </body>
 </html>

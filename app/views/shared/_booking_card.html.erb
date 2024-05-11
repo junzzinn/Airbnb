@@ -1,0 +1,13 @@
+<div class="trip-card">
+  <div class="trip-card-image">
+    <%= image_tag trip.image_url, alt: "Trip Image" %>
+  </div>
+  <div class="trip-card-info">
+    <h2><%= trip.title %></h2>
+    <p><%= trip.description %></p>
+    <div class="trip-card-footer">
+      <span class="trip-card-price"><%= number_to_currency(trip.price) %></span>
+      <button class="btn btn-primary">Book Now</button>
+    </div>
+  </div>
+</div>

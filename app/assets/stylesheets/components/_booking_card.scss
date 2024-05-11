@@ -1,0 +1,36 @@
+
+.trip-card {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.trip-card-image {
+  flex: 0 0 30%; /* Adjust the width of the image column */
+}
+
+.trip-card-image img {
+  width: 100%;
+  height: auto;
+}
+
+.trip-card-info {
+  flex: 1;
+  padding: 20px;
+}
+
+.trip-card-info h2 {
+  margin-top: 0;
+}
+
+.trip-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trip-card-price {
+  font-weight: bold;
+}
