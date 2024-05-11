@@ -1,10 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @message %>
+<div id="messages">
+  <% @messages.each do |message| %>
+    <%= render message %>
+  <% end %>
+</div>
 
 <div>
-  <%= link_to "Edit this message", edit_message_path(@message) %> |
-  <%= link_to "Back to messages", messages_path %>
-
-  <%= button_to "Destroy this message", @message, method: :delete %>
+  <%= link_to "Back to conversations", messages_path %>
 </div>
