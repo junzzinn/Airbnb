@@ -1,38 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Airbnb</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Your Application Name</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <%= yield %>
 
-  <body>
-    <%
-      residence = OpenStruct.new(
-        title: "Beautiful Beach House",
-        description: "A cozy beach house with stunning ocean views.",
-        image: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEyNjIzMTk3NDU3MjE4Nzg2NA%3D%3D/original/f4cbe542-3ce0-4c6f-a8f1-d2120c1b2420.jpeg?im_w=1440&im_q=highq",
-        address: "123 Ocean Avenue",
-        price_per_night: 200,
-        category: "Beach House"
-      )
-    %>
-    <%= render partial: 'shared/residence_card', locals: { residence: residence } %>
-    <%
-      residence2 = OpenStruct.new(
-        title: "Beautiful Beach House",
-        description: "A cozy beach house with stunning ocean views.",
-        image: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4NjI3OTI1MjIxNDQyOA%3D%3D/original/bc989f2d-eca8-4bcf-a9b0-b70b8e685a64.jpeg?im_w=1440&im_q=highq",
-        address: "123 Ocean Avenue",
-        price_per_night: 200,
-        category: "Beach House"
-      )
-    %>
-    <%= render partial: 'shared/residence_card', locals: { residence: residence2 } %>
-    <%= yield %>
-  </body>
+  <%= javascript_include_tag 'application' %>
+</body>
 </html>

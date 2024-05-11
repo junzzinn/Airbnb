@@ -8,3 +8,12 @@
 
   <%= button_to "Destroy this chat", @chat, method: :delete %>
 </div>
+
+<%= form_for [@chat, @message] do |f| %>
+  <%= f.hidden_field :chat_id, value: @chat.id %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <%= f.submit "Send Message" %>
+<% end %>

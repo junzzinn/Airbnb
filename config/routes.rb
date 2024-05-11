@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :messages
+  devise_for :users
+  resources :messages, only: [:index, :create]
   resources :ratings
-  resources :chats
+  resources :chats do
+    resources :messages, only: [:index, :show, :create]
+  end
   resources :bookings
   resources :residences
   resources :users
