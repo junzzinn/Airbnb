@@ -11,17 +11,12 @@
   </head>
 
   <body>
-    <%
-      residence = OpenStruct.new(
-        title: "Beautiful Beach House",
-        description: "A cozy beach house with stunning ocean views.",
-        image: "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEyNjIzMTk3NDU3MjE4Nzg2NA%3D%3D/original/f4cbe542-3ce0-4c6f-a8f1-d2120c1b2420.jpeg?im_w=1440&im_q=highq",
-        address: "123 Ocean Avenue",
-        price_per_night: 200,
-        category: "Beach House"
-      )
-    %>
-    <%= render partial: 'shared/booking_card', locals: { residence: residence } %>
+
+    <div class="container">
+      <%= render partial: 'shared/residence_card', locals: { residence: Residence.first } %>
+      <%= render partial: 'shared/booking_card', locals: { booking: Booking.first } %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
