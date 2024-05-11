@@ -11,12 +11,6 @@
   </head>
 
   <body>
-
-    <div class="container">
-      <%= render partial: 'shared/residence_card', locals: { residence: Residence.first } %>
-      <%= render partial: 'shared/booking_card', locals: { booking: Booking.first } %>
-    </div>
-
     <%= yield %>
   </body>
 </html>
