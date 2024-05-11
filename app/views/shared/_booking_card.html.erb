@@ -1,0 +1,28 @@
+<%= link_to booking_path(booking), class: "link" do %>
+  <div class="trip-card row">
+    <div class="trip-card-info col-md-6">
+      <div class="trip-card-residence-info">
+        <h1><%= booking.residence.title %></h1>
+        <span><%= booking.residence.description %></span>
+      </div>
+      <div class="row">
+        <div class="col-md-3 trip-card-booking-date">
+          <span class="trip-card-price"><%= "#{booking.start_date.strftime("%B")}#{booking.start_date.strftime("%B") == booking.end_date.strftime("%B") ? "" : " - #{booking.end_date.strftime("%B")}"}" %></span><br>
+          <span class="trip-card-price"><%= "#{booking.start_date.strftime("%d")}#{booking.start_date.strftime("%d") == booking.end_date.strftime("%d") ? "" : " - #{booking.end_date.strftime("%d")}"}" %></span><br>
+          <span class="trip-card-price"><%= "#{booking.start_date.strftime("%Y")}#{booking.start_date.strftime("%Y") == booking.end_date.strftime("%Y") ? "" : " - #{booking.end_date.strftime("%Y")}"}" %></span>
+        </div>
+        <div class="col-md-9 trip-card-booking-address">
+          <% booking.residence.address.split(',').each do |part|%>
+            <span class="trip-card-price"><%= part %></span><br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="trip-card-image col-md-6">
+      <%= image_tag booking.residence.image, alt: "Trip Image" %>
+      <div class="trip-card-days-tag">
+        <%= (booking.end_date - booking.start_date).to_i %> Days
+      </div>
+    </div>
+  </div>
+<% end %>
