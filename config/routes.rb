@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :ratings
+  resources :chats
+  resources :bookings
+  resources :residences
+  resources :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
