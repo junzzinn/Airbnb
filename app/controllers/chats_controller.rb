@@ -8,6 +8,8 @@ class ChatsController < ApplicationController
 
   # GET /chats/1 or /chats/1.json
   def show
+    @chat = Chat.find(params[:id])
+    @message = Message.new(chat_id: @chat.id)
   end
 
   # GET /chats/new
@@ -21,16 +23,10 @@ class ChatsController < ApplicationController
 
   # POST /chats or /chats.json
   def create
-    @chat = Chat.new(chat_params)
-
-    respond_to do |format|
-      if @chat.save
-        format.html { redirect_to chat_url(@chat), notice: "Chat was successfully created." }
-        format.json { render :show, status: :created, location: @chat }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @chat.errors, status: :unprocessable_entity }
-      end
+    if params[:chat][:booking_id].present?
+      create_chat_with_booking
+    else
+      create_chat_without_booking
     end
   end
 
@@ -59,6 +55,36 @@ class ChatsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def create_chat_with_booking
+      @chat = Chat.find_or_initialize_by(booking_id: chat_params[:booking_id])
+
+      respond_to do |format|
+        if @chat.save
+          format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
+          format.json { render :show, status: :created, location: @chat }
+        else
+          format.html { render :new }
+          format.json { render json: @chat.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def create_chat_without_booking
+      @chat = Chat.new
+
+      respond_to do |format|
+        if @chat.save
+          format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
+          format.json { render :show, status: :created, location: @chat }
+        else
+          format.html { render :new }
+          format.json { render json: @chat.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+
     def set_chat
       @chat = Chat.find(params[:id])
     end
@@ -67,4 +93,5 @@ class ChatsController < ApplicationController
     def chat_params
       params.require(:chat).permit(:booking_id)
     end
+
 end

@@ -12,8 +12,8 @@
 <%= form_for [@chat, @message] do |f| %>
   <%= f.hidden_field :chat_id, value: @chat.id %>
   <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.label :message %>
+    <%= f.text_area :message %>
   </div>
   <%= f.submit "Send Message" %>
 <% end %>
