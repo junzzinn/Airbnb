@@ -1,1 +1,20 @@
 <%= render partial: 'shared/navbar' %>
+<div class="container">
+  <div class="row">
+    <%= render partial: 'shared/searchbar' %>
+  </div>
+  <div>
+    <% @categories.each do |key, value| %>
+      <%= render partial: 'shared/category_button', locals: {category: key, icon: value, active: key == "All".to_sym ? true : false} %>
+    <% end %>
+  </div>
+  <div class="row no-gutters mt-3">
+    <% @residences.each_slice(4) do |residences_slice| %>
+      <% residences_slice.each do |residence| %>
+        <div class="col-sm-3 mb-3 px-4">
+          <%= render partial: 'shared/residence_card', locals: {residence: residence} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
