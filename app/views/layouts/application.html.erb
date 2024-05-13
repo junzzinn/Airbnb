@@ -6,12 +6,9 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_importmap_tags %>
 </head>
-<body>
+<body class="bg-white">
   <%= yield %>
-  <%= javascript_include_tag 'application' %>
 </body>
-  <body>
-    <%= yield %>
-  </body>
 </html>
