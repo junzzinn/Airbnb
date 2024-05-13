@@ -29,3 +29,42 @@
   </div>
 </nav>
 
+<div class="search-bar">
+      <form>
+        <div class="location-input">
+          <label>Onde</label>
+          <input type="text" placeholder="Buscar destinos">
+        </div>
+        <div>
+          <label>Check in</label>
+          <input type="date" placeholder="insira datas">
+        </div>
+        <div>
+          <label>Check out</label>
+          <input type="date" placeholder="insira datas">
+        </div>
+        <div>
+          <label>Quem</label>
+          <input type="text" placeholder="Hóspedes?">
+        </div>
+        <button type="submit"><%= image_tag "search-btn.png"%></button>
+      </form>
+    </div>
+
+<% @residences.each do |residence| %>
+  <%= link_to residence_path(residence), class: "link" do %>
+    <div class="image-card">
+      <div class="image-container">
+        <%# <button class="arrow left-arrow"><i class="fa-solid fa-chevron-left"></i></button> %>
+        <%= image_tag residence.image, alt: "Residence Image", class: "rounded-image" %>
+        <%# <button class="arrow right-arrow"><i class="fa-solid fa-chevron-right"></i></button> %>
+      </div>
+      <div class="details">
+        <span><strong><%= residence.title %></strong></span><br>
+        <span>Anfitriã(o): <%= residence.user.first_name %></span><br>
+        <span><strong><%= number_to_currency(residence.price_per_night) %></strong> por hóspede</span>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
