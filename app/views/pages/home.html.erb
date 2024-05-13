@@ -1,5 +1,5 @@
 <%= render partial: 'shared/navbar' %>
-<div class="container">
+<div class="container" data-controller="filter">
   <div class="row">
     <%= render partial: 'shared/searchbar' %>
   </div>
@@ -11,7 +11,7 @@
   <div class="row no-gutters mt-3">
     <% @residences.each_slice(4) do |residences_slice| %>
       <% residences_slice.each do |residence| %>
-        <div class="col-sm-3 mb-3 px-4">
+        <div class="col-sm-3 mb-3 px-4" data-filter-target="residence" data-category="<%= residence.category %>">
           <%= render partial: 'shared/residence_card', locals: {residence: residence} %>
         </div>
       <% end %>
