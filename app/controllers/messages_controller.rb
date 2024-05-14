@@ -66,15 +66,12 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_conversation
-      @conversation = Chat.find_by(id: params[:message][:chat_id])
-      unless @conversation
+      begin
+        @conversation = Chat.find(params[:message][:chat_id])
+      rescue ActiveRecord::RecordNotFound
         flash[:alert] = "Chat not found"
         redirect_to root_path
       end
-    end
-
-    def set_conversation
-      @conversation = Chat.find(params[:message][:chat_id])
     end
 
     # Only allow a list of trusted parameters through.
