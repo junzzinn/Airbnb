@@ -5,6 +5,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 .image-container {
@@ -56,4 +57,10 @@
 
 .right-arrow {
   right: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  /* Add any other custom styles you want for the link */
 }
