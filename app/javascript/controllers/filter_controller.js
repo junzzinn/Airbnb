@@ -1,18 +1,23 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["residence"]
+  static targets = ["residence", "categoryButton"]
 
   connect() {
     this.activeCategory = "All"
-    console.log('====================================');
-    console.log("oi");
-    console.log('====================================');
   }
 
   filter(event) {
     event.preventDefault()
     const category = event.currentTarget.dataset.category
+
+    this.categoryButtonTargets.forEach((catButton) => {
+      if (catButton.dataset.category !== category){
+        catButton.classList.remove("active");
+      }else{
+        catButton.classList.add("active")
+      }
+    })
 
     this.activeCategory = category
     this.updateResidences()
