@@ -11,14 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-<<<<<<< HEAD
-          <a class="nav-link" href="#">Acomodações <span class="sr-only">(current)</span></a>
-=======
-          <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">Acomodações</a>
->>>>>>> cf20705e84732310da4acb4e83e4c907cf84b551
+          <a class="nav-link" href="#" id="refreshLink">Acomodações <span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -29,3 +22,16 @@
     </div>
   </div>
 </nav>
+<script>
+  // Get the link element
+  var refreshLink = document.getElementById('refreshLink');
+
+  // Add click event listener to the link
+  refreshLink.addEventListener('click', function(event) {
+    // Prevent the default behavior of the link (i.e., navigating to '#')
+    event.preventDefault();
+
+    // Reload the page
+    location.reload();
+  });
+</script>
