@@ -12,6 +12,14 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#" id="refreshLink">Acomodações <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <% unless user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Entrar", user_session_path, style: "text-decoration: none; color: grey;", onmouseover: "this.style.color='black'", onmouseout: "this.style.color='grey'" %>
+          </li>
+        <% end %>
           <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
@@ -26,6 +34,13 @@
     </div>
   </div>
 </nav>
+<p>User signed in? <%= user_signed_in? %></p>
+<script>
+  var refreshLink = document.getElementById('refreshLink');
+
+  refreshLink.addEventListener('click', function(event) {
+    event.preventDefault();
+
 
 <script>
   var refreshLink = document.getElementById('refreshLink');
