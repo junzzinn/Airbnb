@@ -1,0 +1,4 @@
+<%= link_to "#", class: "icon-button #{active ? "active" : ""}", id: "category-#{category}", data: { action: "click->filter#filter", category: category, target: "filter.categoryButton" } do %>
+  <i class="<%= icon %>"></i>
+  <span><%= category %></span>
+<% end %>

@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @conversation = Chat.find(params[:id]) 
+    @conversation = Chat.find(params[:id])
     @messages = @conversation.messages
   end
 
