@@ -9,7 +9,7 @@ class ResidencesController < ApplicationController
   # GET /residences/1 or /residences/1.json
   def show
     @booking = Booking.new
-    @user = 1
+    @user = current_user
   end
 
   # GET /residences/new
