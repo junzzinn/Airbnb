@@ -1,3 +1,5 @@
+require 'date'
+
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[ show edit update destroy ]
 
@@ -21,11 +23,13 @@ class BookingsController < ApplicationController
 
   # POST /bookings or /bookings.json
   def create
-    @booking = Booking.new(booking_params)
-
+    start_date = Date.parse(params["start_date"])
+    end_date = Date.parse(params["end_date"])
+    @booking = Booking.new(residence_id: params["residence_id"].to_i, user_id: params["user_id"].to_i, total_price: params["total_price"].to_f, start_date: start_date, end_date: end_date, status: params["status"])
+    puts "Booking was successfully created. ID: #{@booking.id}"
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to booking_url(@booking), notice: "Booking was successfully created." }
+        format.html { redirect_to bookings_url, notice: "Booking was successfully created." }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new, status: :unprocessable_entity }

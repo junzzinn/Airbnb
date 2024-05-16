@@ -1,12 +1,65 @@
 <%= render partial: 'shared/navbar' %>
-
-<p style="color: green"><%= notice %></p>
-
-<%= render @residence %>
-
-<div>
-  <%= link_to "Edit this residence", edit_residence_path(@residence) %> |
-  <%= link_to "Back to residences", residences_path %>
-
-  <%= button_to "Destroy this residence", @residence, method: :delete %>
+<div class="container mt-3">
+  <h4><strong><%= @residence.title %></strong></h4>
+  <div class="image-booking-page-container">
+    <%= image_tag @residence.image, alt: "Residence Image", class: "image-booking-page" %>
+  </div>
+  <div class="row my-3">
+    <div class="col-md-8 py-3 ">
+      <div class="col-md-8 pb-3 ">
+        <h4><strong><%= @residence.category %>: <%= @residence.address %></strong></h4>
+        <span><%= @residence.user.first_name %> <%= @residence.user.last_name %></span>
+      </div>
+      <div class="border-top pt-3">
+        <span><%= @residence.description %></span>
+      </div>
+    </div>
+    <div class="col-md-4 shadow border p-3" style="border-radius: 12px;" data-controller="booking">
+      <h4>
+        <strong data-booking-target="pricePerNight" data-price="<%= @residence.price_per_night %>">
+          <%= number_to_currency(@residence.price_per_night) %>
+        </strong> noite
+      </h4>
+      <%= form_with url: bookings_path, method: :post do |f| %>
+        <div class="mb-3">
+          <div class="row px-2">
+            <div class="col-md-6 py-2 border" style="border-radius: 12px 0 0 12px; font-size: 10px;">
+              <%= f.label :check_in, "CHECK-IN" %>
+              <%= f.text_field :check_in, data: { target: "booking.checkIn", action: "change->booking#updateTotalPrice" }, class: "form-control" %>
+            </div>
+            <div class="col-md-6 py-2 border" style="border-radius: 0 12px 12px 0; font-size: 10px;">
+              <%= f.label :check_out, "CHECK-OUT" %>
+              <%= f.text_field :check_out, data: { target: "booking.checkOut", action: "change->booking#updateTotalPrice" }, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <%= f.hidden_field :residence_id, value: @residence.id %>
+        <%= f.hidden_field :user_id, value: @user %>
+        <%= f.hidden_field :status, value: "confirmed" %>
+        <%= f.hidden_field :total_price, data: { target: "booking.totalPriceField" } %>
+        <%= f.hidden_field :start_date, data: { target: "booking.checkInField" } %>
+        <%= f.hidden_field :end_date, data: { target: "booking.checkOutField" } %>
+        <%= f.submit "Reservar", class: 'btn w-100', style: "background-color: rgb(217,8,101); color: white; border-radius: 8px" %>
+      <% end %>
+      <div class="text-center mb-3 mt-2" style="font-size: 12px;">
+        <span>Você ainda não será cobrado</span>
+      </div>
+      <div class="row mb-3 px-2">
+        <div class="col-md-9">
+          <span data-booking-target="nights">0</span> noites x <%= number_to_currency(@residence.price_per_night) %><br>
+          <span>Taxa de limpeza</span><br>
+          <span>Taxa de serviço do Airbnb</span>
+        </div>
+        <div class="col-md-3">
+          <span data-booking-target="totalPriceNight">$0.00</span><br>
+          <span>$46</span><br>
+          <span>$62</span>
+        </div>
+      </div>
+      <div class="row pt-3 border-top px-2">
+        <div class="col-md-9"><span><strong>Total sem impostos</strong></span></div>
+        <div class="col-md-3"><span data-booking-target="total">$0</span></div>
+      </div>
+    </div>
+  </div>
 </div>
