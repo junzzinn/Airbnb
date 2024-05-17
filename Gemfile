@@ -76,3 +76,4 @@ group :test do
 end
 gem 'devise'
 gem 'pg_search', '~> 2.3.0'
+gem 'faker'

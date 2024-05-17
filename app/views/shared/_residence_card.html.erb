@@ -1,6 +1,7 @@
 <%= link_to residence_path(residence), class: "link" do %>
   <div class="image-card" data-target="category.residence" data-category="<%= residence.category %>">
     <div class="image-container">
+      <%= image_tag residence.image, alt: "Residence Image", class: "rounded-image" %>
     </div>
     <div class="details">
       <span><strong><%= residence.title %></strong></span><br>
