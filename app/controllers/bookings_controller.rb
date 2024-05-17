@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1/edit
   def edit
+    @user = 1
   end
 
   # POST /bookings or /bookings.json

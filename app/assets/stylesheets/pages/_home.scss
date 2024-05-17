@@ -8,3 +8,17 @@
   height: 500px;
   overflow: hidden;
 }
+
+.btn-rounded {
+  border-radius: 50%; /* Make the button fully rounded */
+  padding: 10px;      /* Adjust the padding as needed */
+  width: 40px;        /* Set a fixed width and height */
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-rounded i {
+  font-size: 16px; /* Adjust the icon size as needed */
+}

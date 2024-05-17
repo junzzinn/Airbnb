@@ -39,7 +39,10 @@
         <%= f.hidden_field :total_price, data: { target: "booking.totalPriceField" } %>
         <%= f.hidden_field :start_date, data: { target: "booking.checkInField" } %>
         <%= f.hidden_field :end_date, data: { target: "booking.checkOutField" } %>
-        <%= f.submit "Reservar", class: 'btn w-100', style: "background-color: rgb(217,8,101); color: white; border-radius: 8px" %>
+        <%= f.submit "Reservar", class: 'btn w-100', style: "background-color: rgb(217,8,101); color: white; border-radius: 8px", disabled: !user_signed_in? %>
+      <% end %>
+      <% unless user_signed_in? %>
+        <p class="text-danger text-center mt-2">You must be logged in to make a reservation.</p>
       <% end %>
       <div class="text-center mb-3 mt-2" style="font-size: 12px;">
         <span>Você ainda não será cobrado</span>
