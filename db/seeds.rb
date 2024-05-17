@@ -37,7 +37,7 @@ i = 0;
     image: photos.sample,
     address: Faker::Address.full_address,
     price_per_night: Faker::Number.decimal(l_digits: 3, r_digits: 2),
-    category: i % 2 == 0 ? "Apartment" : "House"
+    category: i % 2 == 0 ? "Apartamento" : "Casa"
   )
 
   booking1 = Booking.create!(
