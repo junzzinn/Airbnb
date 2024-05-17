@@ -6,7 +6,7 @@
   <% @residences.each do |residence| %>
     <%= render residence %>
     <p>
-      <%= link_to "Show this residence", residence %>
+      <%= link_to "Show this residence", edit_residence_path(residence) %>
     </p>
   <% end %>
 </div>

@@ -24,7 +24,14 @@
       <% if current_user %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <%= link_to "Bookings", bookings_path, class: "btn btn-link mr-2", style: "text-decoration: none; color: grey;", onmouseover: "this.style.color='black'", onmouseout: "this.style.color='grey'" %>
+            <%= link_to "Reservas", bookings_path, class: "btn btn-link mr-2", style: "text-decoration: none; color: grey;", onmouseover: "this.style.color='black'", onmouseout: "this.style.color='grey'" %>
+          </li>
+        </ul>
+      <% end %>
+      <% if current_user %>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "Residências", residences_path, class: "btn btn-link mr-2", style: "text-decoration: none; color: grey;", onmouseover: "this.style.color='black'", onmouseout: "this.style.color='grey'" %>
           </li>
         </ul>
       <% end %>
