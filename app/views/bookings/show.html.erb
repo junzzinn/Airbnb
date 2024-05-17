@@ -1,7 +1,14 @@
 <%= render partial: 'shared/navbar' %>
 <div class="container mt-3">
-  <%= link_to "Back to bookings", bookings_path %>
-  <h4><strong><%= @booking.residence.title %></strong></h4>
+  <div class="row mb-2">
+    <div class="col-md-1">
+      <%= button_to bookings_path, method: :get, class: "btn" do %>
+        <i class="fa-solid fa-chevron-left"></i>
+      <% end %></div>
+    <div class="col-md-11"><h4><strong><%= @booking.residence.title %></strong></h4></div>
+  </div>
+
+
   <div class="row">
     <div class="col-md-6">
       <%= image_tag @booking.residence.image, alt: "Residence Image", class: "image-booking-page" %>
@@ -9,10 +16,17 @@
     <div class="col-md-6">
       <div class="py-3 ">
         <div class="pb-3 ">
-          <h4><strong><%= @booking.residence.category %>: <%= @booking.residence.address %></strong></h4>
-          <%= button_to @booking, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } do %>
-            <i class="fas fa-times"></i>
-          <% end %>
+          <div class="row">
+            <div class="col-md-11">
+              <h4><strong><%= @booking.residence.category %>: <%= @booking.residence.address %></strong></h4>
+            </div>
+            <div class="col-md-1">
+              <%= button_to @booking, method: :delete, class: "btn btn-danger btn-rounded", data: { confirm: 'Are you sure?' } do %>
+                <i class="fas fa-times"></i>
+              <% end %>
+
+            </div>
+          </div>
           <span><%= @booking.residence.user.first_name %> <%= @booking.residence.user.last_name %></span>
         </div>
         <div class="border-top pt-3">
@@ -43,7 +57,10 @@
           </p>
         </div>
         <div class="row">
-          <%= link_to "Edit this booking", edit_booking_path(@booking) %>
+          <%= link_to edit_booking_path(@booking), class: 'btn w-100', style: "background-color: rgb(217,8,101); color: white; border-radius: 8px" do %>
+            <i class="fa-regular fa-pen-to-square"></i> Edit this booking
+          <% end %>
+
         </div>
       </div>
     </div>
