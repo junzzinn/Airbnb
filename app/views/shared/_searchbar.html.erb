@@ -1,21 +1,37 @@
 <div class="search-bar">
   <form>
     <div class="location-input">
-      <label>Onde</label>
-      <input type="text" placeholder="Buscar destinos">
+      <div class="row">
+        <div class="col-4">
+          <label>Onde</label>
+            <%= form_tag residences_path, method: :get do%>
+              <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Buscar destinos"
+              %>
+            <% end %>
+        </div>
+        <div class="col-7">
+          <div class="row">
+            <div class="col-4">
+                <label>Check in</label>
+                <input type="date" placeholder="insira datas">
+            </div>
+            <div class="col-4">
+                <label>Check out</label>
+                <input type="date" placeholder="insira datas">
+            </div>
+            <div class="col-4">
+                <label>Quem</label>
+                <input type="number" placeholder="Hóspedes?">
+            </div>
+            </div>
+        </div>
+        <div class="col-1">
+          <button type="submit"><%= image_tag "search-btn.png"%></button>
+        </div>
+      </div>
     </div>
-    <div>
-      <label>Check in</label>
-      <input type="date" placeholder="insira datas">
-    </div>
-    <div>
-      <label>Check out</label>
-      <input type="date" placeholder="insira datas">
-    </div>
-    <div>
-      <label>Quem</label>
-      <input type="text" placeholder="Hóspedes?">
-    </div>
-    <button type="submit"><%= image_tag "search-btn.png"%></button>
   </form>
 </div>
