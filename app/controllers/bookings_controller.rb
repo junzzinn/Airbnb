@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
 
   # GET /bookings or /bookings.json
   def index
-    @user = 1
+    @user = current_user
     @bookings = Booking.where(user_id: @user)
   end
 
@@ -20,13 +20,14 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1/edit
   def edit
+    @user = 1
   end
 
   # POST /bookings or /bookings.json
   def create
     start_date = Date.parse(params["start_date"])
     end_date = Date.parse(params["end_date"])
-    @booking = Booking.new(residence_id: params["residence_id"].to_i, user_id: params["user_id"].to_i, total_price: params["total_price"].to_f, start_date: start_date, end_date: end_date, status: params["status"])
+    @booking = Booking.new(residence_id: params["residence_id"].to_i, user_id: current_user.id, total_price: params["total_price"].to_f, start_date: start_date, end_date: end_date, status: params["status"])
     puts "Booking was successfully created. ID: #{@booking.id}"
     respond_to do |format|
       if @booking.save
