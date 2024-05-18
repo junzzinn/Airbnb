@@ -51,16 +51,11 @@ class ResidencesController < ApplicationController
 
   # DELETE /residences/1 or /residences/1.json
   def destroy
-    if @residence.destroy
-      respond_to do |format|
-        format.html { redirect_to residences_url, notice: "Residence was successfully destroyed." }
-        format.json { head :no_content }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to residences_url, alert: "Failed to destroy residence." }
-        format.json { head :unprocessable_entity }
-      end
+    @residence.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to residences_url, notice: "Residence was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
