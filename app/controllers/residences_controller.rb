@@ -20,6 +20,7 @@ class ResidencesController < ApplicationController
 
   # GET /residences/1/edit
   def edit
+
   end
 
   # POST /residences or /residences.json
@@ -41,6 +42,8 @@ class ResidencesController < ApplicationController
   def update
     respond_to do |format|
       if @residence.update(residence_params)
+        puts @residence
+        puts current_user
         format.html { redirect_to residence_url(@residence), notice: "Residence was successfully updated." }
         format.json { render :show, status: :ok, location: @residence }
       else
