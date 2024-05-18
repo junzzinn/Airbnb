@@ -5,6 +5,6 @@
 <br>
 
 <div>
-  <%= link_to "Show this residence", @residence %> |
+  <%= link_to "Delete this residence", residences_path(@residence), method: :delete, data: { confirm: 'Are you sure?' } %> |
   <%= link_to "Back to residences", residences_path %>
 </div>
