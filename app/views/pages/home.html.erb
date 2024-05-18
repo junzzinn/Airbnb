@@ -12,7 +12,7 @@
     <% @residences.each_slice(4) do |residences_slice| %>
       <% residences_slice.each do |residence| %>
         <div class="col-sm-3 mb-3 px-4" data-filter-target="residence" data-category="<%= residence.category %>">
-          <%= render partial: 'shared/residence_card', locals: {residence: residence} %>
+          <%= render partial: 'shared/residence_card', locals: {residence: residence, path: residence_path(residence)} %>
         </div>
       <% end %>
     <% end %>
