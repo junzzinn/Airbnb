@@ -5,8 +5,8 @@
 <br>
 
 <div>
-  <%= button_to @residence, method: :delete, class: "btn btn-danger btn-rounded", data: { confirm: 'Are you sure?' } do %>
-                <i class="fas fa-times"></i>
-              <% end %> |
+  <%= button_to "Delete", residence_path(@residence), method: :delete, class: "btn btn-danger btn-rounded", data: { confirm: 'Are you sure?' } do %>
+    <i class="fas fa-times"></i>
+  <% end %>
   <%= link_to "Back to residences", residences_path %>
 </div>
