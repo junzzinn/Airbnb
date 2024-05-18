@@ -3,7 +3,8 @@ class ResidencesController < ApplicationController
 
   # GET /residences or /residences.json
   def index
-    @residences = Residence.all
+    @residences = Residence.where(user_id: current_user)
+    @user = current_user
   end
 
   # GET /residences/1 or /residences/1.json
@@ -24,7 +25,7 @@ class ResidencesController < ApplicationController
   # POST /residences or /residences.json
   def create
     @residence = Residence.new(residence_params)
-
+    @residence.user_id = current_user.id
     respond_to do |format|
       if @residence.save
         format.html { redirect_to residence_url(@residence), notice: "Residence was successfully created." }
