@@ -1,14 +1,32 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Residences</h1>
-
-<div id="residences">
-  <% @residences.each do |residence| %>
-    <%= render residence %>
-    <p>
-      <%= link_to "Show this residence", edit_residence_path(residence) %>
-    </p>
-  <% end %>
+<%= render partial: 'shared/navbar' %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-11">
+      <h1>Residences</h1>
+    </div>
+    <div class="col-md-1">
+      <%= button_to new_residence_path, method: :get, class: "btn btn-danger btn-rounded btn-custom" do %>
+                <i class="fas fa-plus"></i>
+              <% end %>
+     </div>
+  </div>
+  <div class="row no-gutters mt-3">
+    <% @residences.each_slice(4) do |residences_slice| %>
+      <% residences_slice.each do |residence| %>
+        <div class="col-sm-3 mb-3 px-4" data-filter-target="residence" data-category="<%= residence.category %>">
+          <%= render partial: 'shared/residence_card', locals: {residence: residence, path: edit_residence_path(residence)} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New residence", new_residence_path %>
+<style>
+  .btn-custom {
+    background-color: #ff5a5f;
+    border-color: #ff5a5f;
+  }
+  .btn-custom:hover {
+    background-color: #e2464a;
+    border-color: #e2464a;
+  }
+</style>
